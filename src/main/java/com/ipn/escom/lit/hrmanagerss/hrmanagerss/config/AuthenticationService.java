@@ -1,8 +1,11 @@
 package com.ipn.escom.lit.hrmanagerss.hrmanagerss.config;
 
+import com.ipn.escom.lit.hrmanagerss.hrmanagerss.presentation.dto.EstadoDTO;
+import com.ipn.escom.lit.hrmanagerss.hrmanagerss.presentation.dto.PuestoDTO;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.presentation.dto.RegistroEmpleadoDTO;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.repository.EmpleadoRepo;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.service.AdminService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -44,5 +47,13 @@ public class AuthenticationService {
       .nombre(empleado.getName())
       .email(empleado.getEmail())
       .build();
+  }
+
+  public List<PuestoDTO> getPuestosList() {
+    return adminService.getPuestosList();
+  }
+
+  public List<EstadoDTO> getEstadosList() {
+    return adminService.getEstadosList();
   }
 }
