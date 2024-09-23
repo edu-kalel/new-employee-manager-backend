@@ -11,8 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,12 +32,16 @@ public class Departamento implements Serializable {
   @Column(name = "EstaActivo")
   private boolean estado;
 
-  @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
-  @JsonBackReference
-  private List<Empleado> empleados = new ArrayList<>();
+//  @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
+//  @JsonBackReference
+//  private List<Empleado> empleados = new ArrayList<>();
 
   @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
   @JsonBackReference
-  private List<Puesto> puestos = new ArrayList<>();
+  private Set<Puesto> puestos;
 
+  @Override
+  public String toString() {
+    return "Departamento{}";
+  }
 }

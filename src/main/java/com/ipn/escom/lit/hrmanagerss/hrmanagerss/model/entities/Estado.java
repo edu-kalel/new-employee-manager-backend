@@ -11,8 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,6 +35,10 @@ public class Estado implements Serializable {
 
   @OneToMany(mappedBy = "estado", fetch = FetchType.LAZY)
   @JsonBackReference
-  private List<Empleado> empleados = new ArrayList<>();
+  private Set<Empleado> empleados;
 
+  @Override
+  public String toString() {
+    return "Estado{}";
+  }
 }

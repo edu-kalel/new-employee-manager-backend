@@ -4,7 +4,7 @@ package com.ipn.escom.lit.hrmanagerss.hrmanagerss.controller;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.config.AuthenticationRequest;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.config.AuthenticationResponse;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.presentation.dto.RegistroEmpleadoDTO;
-import com.ipn.escom.lit.hrmanagerss.hrmanagerss.service.AuthenticationService;
+import com.ipn.escom.lit.hrmanagerss.hrmanagerss.config.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,8 @@
-package com.ipn.escom.lit.hrmanagerss.hrmanagerss.service;
+package com.ipn.escom.lit.hrmanagerss.hrmanagerss.config;
 
-import com.ipn.escom.lit.hrmanagerss.hrmanagerss.config.AuthenticationRequest;
-import com.ipn.escom.lit.hrmanagerss.hrmanagerss.config.AuthenticationResponse;
-import com.ipn.escom.lit.hrmanagerss.hrmanagerss.config.JwtService;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.presentation.dto.RegistroEmpleadoDTO;
 import com.ipn.escom.lit.hrmanagerss.hrmanagerss.repository.EmpleadoRepo;
+import com.ipn.escom.lit.hrmanagerss.hrmanagerss.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

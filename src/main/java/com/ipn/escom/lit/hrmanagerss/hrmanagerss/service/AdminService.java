@@ -59,7 +59,7 @@ public class AdminService {
       .curp(registroEmpleadoDTO.getCurp())
       .puesto(puesto)
       .estado(estado)
-      .departamento(puesto.getDepartamento())
+//      .departamento(puesto.getDepartamento())
       .password(passwordEncoder.encode(registroEmpleadoDTO.getPassword()))
       .rol(registroEmpleadoDTO.getRol())
       .build();
@@ -84,7 +84,7 @@ public class AdminService {
     empleado.setSecondSurname(actualizaEmpleadoDTO.getSecondSurname());
     empleado.setPuesto(puesto);
     empleado.setEstado(estado);
-    empleado.setDepartamento(puesto.getDepartamento());
+//    empleado.setDepartamento(puesto.getDepartamento());
     empleado.setRol(actualizaEmpleadoDTO.getRol());
     return mapper.mapToEmpleadoDTO(empleadoRepo.save(empleado));
   }
@@ -132,10 +132,10 @@ public class AdminService {
   public String deleteDepartment(String id) {
     var departamento = departamentoRepo.findById(id)
       .orElseThrow(() -> new EntityNotFoundException("Departamento no existe"));
-    if (!departamento.getEmpleados().isEmpty()) {
-      throw new EntityExistsException("El departamento aún tiene empleados asociados, editalos o eliminalos antes de eliminar este departamento.");
-    }
-    else if (!departamento.getPuestos().isEmpty()) {
+//    if (!departamento.getEmpleados().isEmpty()) {
+//      throw new EntityExistsException("El departamento aún tiene empleados asociados, editalos o eliminalos antes de eliminar este departamento.");
+//    }
+    if (!departamento.getPuestos().isEmpty()) {
       throw new EntityExistsException("El departamento aún tiene puestos asociados, editalos o eliminalos antes de eliminar este departamento.");
     }
     else{
@@ -173,19 +173,20 @@ public class AdminService {
     var departamento = departamentoRepo.findById(actualizarPuestoDTO.getDepartamento_id())
       .orElseThrow(() -> new EntityNotFoundException("Departamento no existe"));
 
-    if (!departamento.equals(puesto.getDepartamento())){
-      List<Empleado> empleados = empleadoRepo.findByPuesto_Id(actualizarPuestoDTO.getId());
-      if (!empleados.isEmpty()) {
-        for (Empleado empleado : empleados) {
-          empleado.setDepartamento(departamento);
-          empleadoRepo.save(empleado);
-        }
-      }
-      puesto.setDepartamento(departamento);
-    }
+//    if (!departamento.equals(puesto.getDepartamento())){
+//      List<Empleado> empleados = empleadoRepo.findByPuesto_Id(actualizarPuestoDTO.getId());
+//      if (!empleados.isEmpty()) {
+//        for (Empleado empleado : empleados) {
+//          empleado.setDepartamento(departamento);
+//          empleadoRepo.save(empleado);
+//        }
+//      }
+//      puesto.setDepartamento(departamento);
+//    }
 
     puesto.setNombre(actualizarPuestoDTO.getNombre());
     puesto.setEstado(actualizarPuestoDTO.isEstado());
+    puesto.setDepartamento(departamento);
 
     return mapper.mapToPuestoDTO(puestoRepo.save(puesto));
   }

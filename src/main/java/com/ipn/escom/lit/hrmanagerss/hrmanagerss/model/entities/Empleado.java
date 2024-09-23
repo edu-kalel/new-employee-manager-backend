@@ -39,11 +39,11 @@ public class Empleado implements Serializable, UserDetails {
   private String firstSurname;
   @Column(name="SegundoApellido", length = 50)
   private String secondSurname;
-  @Column(name = "Email", nullable = false, length = 100)
+  @Column(name = "email", nullable = false, length = 100)
   private String email;
   @Column(name = "CURP", length = 50)
   private String curp;
-  @Column(length = 60, nullable = false)
+  @Column(nullable = false)
   private String password;
   @Column(nullable = false)
   @Enumerated(EnumType.STRING)
@@ -57,9 +57,9 @@ public class Empleado implements Serializable, UserDetails {
   @JoinColumn(name = "Estado_id", referencedColumnName = "id")
   private Estado estado;
 
-  @ManyToOne
-  @JoinColumn(name = "Departamento_id", referencedColumnName = "id")
-  private Departamento departamento;
+//  @ManyToOne
+//  @JoinColumn(name = "Departamento_id", referencedColumnName = "id")
+//  private Departamento departamento;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -69,6 +69,11 @@ public class Empleado implements Serializable, UserDetails {
   @Override
   public String getUsername() {
     return email;
+  }
+
+  @Override
+  public String getPassword() {
+    return password;
   }
 
   @Override
@@ -89,5 +94,10 @@ public class Empleado implements Serializable, UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
+  }
+
+  @Override
+  public String toString() {
+    return "Empleado{}";
   }
 }

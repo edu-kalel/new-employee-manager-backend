@@ -22,7 +22,7 @@ public class Mapper {
       empleado.getEmail(),
       empleado.getCurp(),
       empleado.getPuesto().getNombre(),
-      empleado.getDepartamento().getNombre(),
+      empleado.getPuesto().getDepartamento().getNombre(),
       empleado.getEstado().getNombre(),
       empleado.getRol().toString()
     );

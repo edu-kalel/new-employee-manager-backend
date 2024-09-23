@@ -13,9 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SplittableRandom;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,10 +38,14 @@ public class Puesto implements Serializable {
 
   @OneToMany(mappedBy = "puesto", fetch = FetchType.LAZY)
   @JsonBackReference
-  private List<Empleado> empleados = new ArrayList<>();
+  private Set<Empleado> empleados;
 
   @ManyToOne
   @JoinColumn(name = "Departamento_id", referencedColumnName = "id")
   private Departamento departamento;
 
+  @Override
+  public String toString() {
+    return "Puesto{}";
+  }
 }
